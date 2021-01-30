@@ -4,9 +4,9 @@ from argparse import ArgumentParser
 
 class ArgLauncher(metaclass=ABCMeta):
 
-    def __init__(self, args):
+    def __init__(self, args, parser=ArgumentParser()):
         self._args = args
-        self._parser = ArgumentParser()
+        self._parser = parser
 
     @property
     def parser(self) -> ArgumentParser:
