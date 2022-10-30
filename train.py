@@ -16,7 +16,7 @@ if __name__ == '__main__':
     cls_model = ClsModule(num_classes=len(NoduleDataModule.CLS_MAPPINGS))
 
     trainer = Trainer(
-        max_epochs=3
+        max_epochs=4
     )
 
     trainer.fit(cls_model, datamodule=cls_dm)

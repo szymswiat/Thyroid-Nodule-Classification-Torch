@@ -10,7 +10,7 @@ from modules.ClsModule import ClsModule
 from modules.NoduleDataModule import NoduleDataModule
 
 
-class NihClassifierLauncher(SlurmLauncher):
+class NoduleClassifierLauncher(SlurmLauncher):
 
     def setup_hparams(self, parser: HyperOptArgumentParser) -> int:
         return 1
@@ -40,4 +40,4 @@ class NihClassifierLauncher(SlurmLauncher):
 
 
 if __name__ == '__main__':
-    NihClassifierLauncher(sys.argv[1:]).launch()
+    NoduleClassifierLauncher(sys.argv[1:]).launch()

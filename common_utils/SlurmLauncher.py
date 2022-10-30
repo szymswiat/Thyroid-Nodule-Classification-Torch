@@ -26,6 +26,7 @@ class SlurmLauncher:
         parser.add_argument('-p', '--partition', type=str, default='plgrid-gpu',
                             help=f'Slurm partition. Available options {self.AVAILABLE_PARTITIONS}.')
         parser.add_argument('-j', '--job_name', type=str, required=True, help='Name of slurm job.')
+        parser.add_argument('-t', '--time', type=str, default='00-00:20:00', help='Walltime.')
 
     def setup_hparams(self, parser: HyperOptArgumentParser) -> int:
         """
@@ -70,8 +71,7 @@ class SlurmLauncher:
         cluster.memory_mb_per_node = args.mem_per_node * 1024
         cluster.per_experiment_nb_cpus = args.cpus_per_node
 
-
-        # cluster.add_slurm_cmd(cmd='ntasks-per-node', value=1, comment='1 task per GPU')
+        # TODO cluster.add_slurm_cmd(cmd='ntasks-per-node', value=1, comment='1 task per GPU')
         cluster.add_slurm_cmd(cmd='constraint', value='localfs', comment='Enable local filesystem')
         cluster.add_slurm_cmd(cmd='partition', value=args.partition, comment='Use partition dedicated for GPUs.')
 
